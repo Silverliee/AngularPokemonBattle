@@ -13,7 +13,9 @@ export async function getPokemonById(pokemonId: number): Promise<Pokemon> {
     data.stats[3].base_stat,
     data.stats[4].base_stat,
     data.stats[5].base_stat,
-    data.moves
+    data.moves,
+    data.sprites.front_default,
+    data.sprites.back_default
   );
 }
 

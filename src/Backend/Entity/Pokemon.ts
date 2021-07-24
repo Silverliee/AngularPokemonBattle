@@ -9,8 +9,10 @@ export class Pokemon {
   private _specialDefense: number ;
   private _speed: number ;
   private _abilities: Array<object> | undefined;
+  private _spriteFront: string;
+  private _spriteBack: string
 
-  constructor(id: number, name: string, hp: number, attack: number, defence: number, specialAttack: number, specialDefense: number, speed: number,abilities: Array<object> | undefined) {
+  constructor(id: number, name: string, hp: number, attack: number, defence: number, specialAttack: number, specialDefense: number, speed: number,abilities: Array<object> | undefined, spriteFront: string, spriteBack: string) {
     this._id = id;
     this._name = name;
     this._hp = hp;
@@ -20,6 +22,8 @@ export class Pokemon {
     this._specialDefense = specialDefense;
     this._speed = speed;
     this._abilities = abilities;
+    this._spriteFront = spriteFront;
+    this._spriteBack = spriteBack;
   }
 
   get id(): number {
@@ -92,5 +96,21 @@ export class Pokemon {
 
   set abilities(value: Array<object> | undefined) {
     this._abilities = value;
+  }
+
+  get spriteFront(): string {
+    return this._spriteFront;
+  }
+
+  set spriteFront(value: string) {
+    this._spriteFront = value;
+  }
+
+  get spriteBack(): string {
+    return this._spriteBack;
+  }
+
+  set spriteBack(value: string) {
+    this._spriteBack = value;
   }
 }
