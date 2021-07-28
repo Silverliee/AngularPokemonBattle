@@ -9,7 +9,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { GameArenaComponent } from './game-arena/game-arena.component';
 
 const routes: Routes = [
-  { path: 'menu', component: MenuComponent },
+  { path: '', component: MenuComponent },
   { path: 'game/:id1/:id2', component: GameArenaComponent }
 ];
 
