@@ -19,6 +19,14 @@ export async function getPokemonById(pokemonId: number): Promise<Pokemon> {
   );
 }
 
+export async function getPokemons(): Promise<any[]> {
+  let pokemons: Pokemon[] = [];
+  for (let i = 1; i < 30; i++) {
+    pokemons.push(await getPokemonById(i));
+  }
+  return pokemons;
+}
+
 export async function apiCall(url: string): Promise<any> {
   const response = await fetch(url);
   return await response.json()

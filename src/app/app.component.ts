@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {Game} from "../Backend/Entity/Game";
 import {attack, whoPlayFirst} from "../Backend/Middleware/GameInterface";
-import {getPokemonById} from "../Backend/Middleware/ApiInterface";
+import {getPokemonById, getPokemons} from "../Backend/Middleware/ApiInterface";
 
 @Component({
   selector: 'app-root',
@@ -35,7 +35,6 @@ export class AppComponent {
   }
 
   public async playGame(): Promise<void> {
-    console.log(this.pokemonTwo)
     this.play = !this.play;
     const game = new Game(this.pokemonOne, this.pokemonTwo, whoPlayFirst(this.pokemonOne, this.pokemonTwo));
     while (game.status !== "finish" && this.play) {
