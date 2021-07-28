@@ -1,0 +1,5 @@
+<img class="center" style="width: 150px;margin-bottom: 10px;" src="assets/pokemon-title.png" alt="pokemon">
+<div id="arena" class="center">
+  <app-pokemon [pokemonOneBaseHp]="pokemonOneBaseHP" [pokemonTwoBaseHP]="pokemonTwoBaseHP" [pokemonOne]="pokemonOne"  [pokemonTwo]="pokemonTwo"></app-pokemon>
+</div>
+<app-fight-description  [winner]="winner" [message]="message" (parentPlayGame)="playGame()" [play]="play" ></app-fight-description>

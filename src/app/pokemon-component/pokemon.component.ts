@@ -11,7 +11,6 @@ export class PokemonComponent implements OnInit {
   @Input() pokemonOneBaseHp : any;
   @Input() pokemonTwoBaseHP : any;
 
-
   constructor() {
   }
 

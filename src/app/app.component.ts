@@ -9,56 +9,9 @@ import {getPokemonById, getPokemons} from "../Backend/Middleware/ApiInterface";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  play: boolean = false;
-  title = 'Pokeapp';
-  pokemonTwo: any;
-  pokemonOne: any;
-  pokemonOneBaseHP: any;
-  pokemonTwoBaseHP: any;
-  message: any;
-  winner: any;
-  sleepNow = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay))
+  title: string = "title";
 
   constructor() {
-    this.createPokemon().then(() => "ok");
-  }
-
-  getRandomInt(max: number) {
-    return Math.floor(Math.random() * max);
-  }
-
-  async createPokemon() {
-    this.pokemonOne = await getPokemonById(this.getRandomInt(50));
-    this.pokemonTwo = await getPokemonById(this.getRandomInt(50));
-    this.pokemonOneBaseHP = this.pokemonOne.hp
-    this.pokemonTwoBaseHP = this.pokemonTwo.hp
-  }
-
-  public async playGame(): Promise<void> {
-    this.play = !this.play;
-    const game = new Game(this.pokemonOne, this.pokemonTwo, whoPlayFirst(this.pokemonOne, this.pokemonTwo));
-    while (game.status !== "finish" && this.play) {
-      await this.sleepNow(1000)
-      if (game.pokemonOne.id == game.turn) {
-        let random1 = this.getRandomInt(10)
-        this.message = this.pokemonOne.name.toUpperCase() + " attaque " + this.pokemonTwo.name.toUpperCase() + " avec l'attaque " + this.pokemonOne._abilities[random1.toString()].move.name + "!"
-        await attack(this.pokemonOne._abilities[random1.toString()].move.url, game.pokemonOne, game.pokemonTwo);
-        game.turn = game.pokemonTwo.id;
-      } else {
-        let random2 = this.getRandomInt(10)
-        this.message = this.pokemonTwo.name.toUpperCase() + " attaque " + this.pokemonOne.name.toUpperCase() + " avec l'attaque " + this.pokemonTwo._abilities[random2.toString()].move.name + "!"
-        await attack(this.pokemonOne._abilities[random2.toString()].move.url, game.pokemonTwo, game.pokemonOne);
-        game.turn = game.pokemonOne.id;
-      }
-      if (game.pokemonOne.hp <= 0) {
-        game.status = "finish";
-      }
-      if (game.pokemonTwo.hp <= 0) {
-        game.status = "finish";
-      }
-    }
-    const winner = game.pokemonOne.hp > this.pokemonTwo.hp ? game.pokemonOne.name : game.pokemonTwo.name;
-    this.winner = "Le gagnant est " + winner.toUpperCase()
   }
 
 }

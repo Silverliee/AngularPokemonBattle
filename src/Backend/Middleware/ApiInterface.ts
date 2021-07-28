@@ -19,9 +19,9 @@ export async function getPokemonById(pokemonId: number): Promise<Pokemon> {
   );
 }
 
-export async function getPokemons(): Promise<any[]> {
+export async function getPokemons() {
   let pokemons: Pokemon[] = [];
-  for (let i = 1; i < 30; i++) {
+  for (let i = 1; i < 10; i++) {
     pokemons.push(await getPokemonById(i));
   }
   return pokemons;

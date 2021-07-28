@@ -1,0 +1,13 @@
+<div *ngFor="let pokemon of allPokemons">
+  <button (click)="choiceFirstPokemon(pokemon.id)">
+    <img src="{{pokemon.spriteFront}}">{{ pokemon.name }}
+  </button>
+</div>
+<hr/>
+<div *ngFor="let pokemon of allPokemons">
+  <button  (click)="choiceSecondPokemon(pokemon.id)" >
+    <img src="{{pokemon.spriteFront}}">{{ pokemon.name }}{{pokemon.id}}
+  </button>
+</div>
+
+<button routerLink="/game/{{firstPokemons}}/{{secondPokemons}}" routerLinkActive="active" >play</button>

@@ -1,13 +1,2 @@
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-}
-#arena{
-  background-image: url('src/assets/arena.png');
-  width: 800px;
-  height: 450px;
-  border: 5px solid black;
-}
+
 
