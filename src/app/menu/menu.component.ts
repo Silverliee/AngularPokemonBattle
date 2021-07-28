@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {getPokemonById, getPokemons} from "../../Backend/Middleware/ApiInterface";
-import {Pokemon} from "../../Backend/Entity/Pokemon";
+import {getPokemons} from "../../Backend/Middleware/ApiInterface";
 
 @Component({
   selector: 'app-menu',
@@ -11,6 +10,7 @@ export class MenuComponent implements OnInit {
   allPokemons :any;
   firstPokemons :any;
   secondPokemons :any;
+  choosed : boolean = false;
 
   async createPokemon() {
     this.allPokemons = await getPokemons();
@@ -24,10 +24,16 @@ export class MenuComponent implements OnInit {
 
   async choiceFirstPokemon(id: number) {
     this.firstPokemons = id;
+    if(this.secondPokemons){
+      this.choosed = true
+    }
   }
 
   async choiceSecondPokemon(id: number) {
     this.secondPokemons = id;
+    if(this.firstPokemons){
+      this.choosed = true
+    }
   }
 
 }

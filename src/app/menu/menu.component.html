@@ -1,13 +1,35 @@
-<div *ngFor="let pokemon of allPokemons">
-  <button (click)="choiceFirstPokemon(pokemon.id)">
-    <img src="{{pokemon.spriteFront}}">{{ pokemon.name }}
-  </button>
-</div>
-<hr/>
-<div *ngFor="let pokemon of allPokemons">
-  <button  (click)="choiceSecondPokemon(pokemon.id)" >
-    <img src="{{pokemon.spriteFront}}">{{ pokemon.name }}{{pokemon.id}}
-  </button>
+<img class="center" style="width: 150px;margin-bottom: 10px;" src="assets/pokemon-title.png" alt="pokemon">
+<h2 class="text-center">Choisissez le premier pokemon:</h2>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let pokemon of allPokemons">
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-light" (click)="choiceFirstPokemon(pokemon.id)">
+          <p>{{ pokemon.id }}</p>
+          <img src="{{pokemon.spriteFront}}">
+          <p>{{ pokemon.name }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<button routerLink="/game/{{firstPokemons}}/{{secondPokemons}}" routerLinkActive="active" >play</button>
+<h2 class="text-center">Choisissez le second pokemon:</h2>
+<div class="container">
+  <div class="row">
+    <div *ngFor="let pokemon of allPokemons">
+      <div class="col-sm-4">
+        <button type="button" class="btn btn-light" (click)="choiceSecondPokemon(pokemon.id)">
+          <p>{{ pokemon.id }}</p>
+          <img src="{{pokemon.spriteFront}}">
+          <p>{{ pokemon.name }}</p>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <button type="button button-center" class="btn btn-success" routerLink="/game/{{firstPokemons}}/{{secondPokemons}}"
+          routerLinkActive="active" [disabled]="!choosed">PLAY
+  </button>
+</div>

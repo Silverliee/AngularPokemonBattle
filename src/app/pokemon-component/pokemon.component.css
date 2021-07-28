@@ -1,20 +1,14 @@
-.name{
-  color:white;
+.pokeinfo{
+  border-radius: 10px;
+  width: 150px;
+  font-weight: bold;
+  color: black;
+  background-color: whitesmoke;
+  padding: 4px;
   text-align: center;
-}
-#poke1{
-  width: 100px;
-  position: static ;
-  margin-right: 200px;
-}
-#poke2{
-  width: 100px;
-  position: static ;
-  margin-top: 150px;
-  margin-left: 250px;
+  border: solid black 1px;
 }
 .pokebox{
-  width: 125px;
   border:2px;
   margin-left: auto;
   margin-right: auto;
@@ -25,6 +19,19 @@
   margin-right: auto;
   width: 80%;
 }
+
+#poke1{
+  margin-top: 200px;
+  margin-left: 80px;
+
+}
+
+#poke2{
+  width: 150px;
+  margin-top: 120px;
+  margin-left: 350px;
+}
+
 img{
   animation: move 1s linear infinite;
 }

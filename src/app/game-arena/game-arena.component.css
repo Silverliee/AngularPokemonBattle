@@ -5,6 +5,7 @@
   width: 80%;
 }
 #arena{
+  border-radius: 10px;
   background-image: url('src/assets/arena.png');
   width: 800px;
   height: 450px;

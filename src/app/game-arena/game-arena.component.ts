@@ -61,8 +61,10 @@ export class GameArenaComponent implements OnInit {
         game.status = "finish";
       }
     }
-    const winner = game.pokemonOne.hp > this.pokemonTwo.hp ? game.pokemonOne.name : game.pokemonTwo.name;
-    this.winner = "Le gagnant est " + winner.toUpperCase()
+    if(game.pokemonOne.hp <= 0 || game.pokemonTwo.hp <= 0){
+      const winner = game.pokemonOne.hp > this.pokemonTwo.hp ? game.pokemonOne.name : game.pokemonTwo.name;
+      this.winner = "Le gagnant est " + winner.toUpperCase() + "!"
+    }
   }
 
 }

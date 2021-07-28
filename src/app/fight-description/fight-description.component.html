@@ -1,10 +1,9 @@
 <div id="description" class="center">
-
-  <button (click)="playGame()">
-    <ng-template [ngIf]="play == true">Pause</ng-template>
-    <ng-template [ngIf]="play == false">Play</ng-template>
+  <h4> Date : {{todayDate | date:'medium': 'fr'}} </h4>
+  <button type="button" class="btn btn-success button-center"  (click)="playGame()" [disabled]="winner">
+    <ng-template [ngIf]="play == true">STOP</ng-template>
+    <ng-template [ngIf]="play == false">PLAY</ng-template>
   </button>
-  <p> Date : {{todayDate | date:'medium': 'fr'}} </p>
-  <p> {{ message }}</p>
-  <p> {{ winner }}</p>
+  <h5> {{ message }}</h5>
+  <h5> {{ winner }}</h5>
 </div>
