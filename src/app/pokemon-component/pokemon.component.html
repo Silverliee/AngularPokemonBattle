@@ -1,0 +1,19 @@
+<div class="pokebox">
+  <div id="poke2">
+    <ng-template [ngIf]="pokemonTwo.hp >0">
+      <img class="center" src="{{pokemonTwo.spriteFront}}" alt="{{pokemonTwo.name}}"/>
+    </ng-template>
+    <progress class="center" max="{{pokemonTwoBaseHP}}" value="{{pokemonTwo.hp}}"> {{pokemonTwo.hp}}PV
+    </progress>
+    <p class="name">{{pokemonTwo.name}}</p>
+  </div>
+  <div id="poke1">
+    <ng-template [ngIf]="pokemonOne.hp >0">
+      <img class="center" src="{{pokemonOne.spriteBack}}" alt="{{pokemonOne.name}}"/>
+    </ng-template>
+    <progress class="center" max="{{pokemonOneBaseHp}}" value="{{pokemonOne.hp}}"> {{pokemonOne.hp}}PV
+    </progress>
+    <p class="name">{{pokemonOne.name}}</p>
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+.name{
+  color:white;
+  text-align: center;
+}
+#poke1{
+  width: 100px;
+  position: static ;
+  margin-right: 200px;
+}
+#poke2{
+  width: 100px;
+  position: static ;
+  margin-top: 150px;
+  margin-left: 250px;
+}
+.pokebox{
+  width: 125px;
+  border:2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+img{
+  animation: move 1s linear infinite;
+}
+@keyframes move {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+}
