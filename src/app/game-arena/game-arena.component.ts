@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {getPokemonById} from "../../Backend/Middleware/ApiInterface";
 import {Game} from "../../Backend/Entity/Game";
 import {attack, whoPlayFirst} from "../../Backend/Middleware/GameInterface";
@@ -17,6 +17,7 @@ export class GameArenaComponent implements OnInit {
   pokemonOneBaseHP: any;
   pokemonTwoBaseHP: any;
   message: any;
+  damage: any;
   winner: any;
   sleepNow = (delay: number) => new Promise((resolve) => setTimeout(resolve, delay))
 
@@ -25,7 +26,7 @@ export class GameArenaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    }
+  }
 
   getRandomInt(max: number) {
     return Math.floor(Math.random() * max);
@@ -45,13 +46,14 @@ export class GameArenaComponent implements OnInit {
       await this.sleepNow(1000)
       if (game.pokemonOne.id == game.turn) {
         let random1 = this.getRandomInt(10)
-        this.message = this.pokemonOne.name.toUpperCase() + " attaque " + this.pokemonTwo.name.toUpperCase() + " avec l'attaque " + this.pokemonOne._abilities[random1.toString()].move.name + "!"
-        await attack(this.pokemonOne._abilities[random1.toString()].move.url, game.pokemonOne, game.pokemonTwo);
+        this.damage = await attack(this.pokemonOne._abilities[random1.toString()].move.url, game.pokemonOne, game.pokemonTwo);
+        this.message = this.pokemonOne.name.toUpperCase() + " attaque " + this.pokemonTwo.name.toUpperCase() + " avec l'attaque " + this.pokemonOne._abilities[random1.toString()].move.name + " et cause " + this.damage.toFixed(2) + " dommages !"
+
         game.turn = game.pokemonTwo.id;
       } else {
         let random2 = this.getRandomInt(10)
-        this.message = this.pokemonTwo.name.toUpperCase() + " attaque " + this.pokemonOne.name.toUpperCase() + " avec l'attaque " + this.pokemonTwo._abilities[random2.toString()].move.name + "!"
-        await attack(this.pokemonOne._abilities[random2.toString()].move.url, game.pokemonTwo, game.pokemonOne);
+        this.damage = await attack(this.pokemonOne._abilities[random2.toString()].move.url, game.pokemonTwo, game.pokemonOne);
+        this.message = this.pokemonTwo.name.toUpperCase() + " attaque " + this.pokemonOne.name.toUpperCase() + " avec l'attaque " + this.pokemonTwo._abilities[random2.toString()].move.name + " et cause " + this.damage.toFixed(2) + " dommages !"
         game.turn = game.pokemonOne.id;
       }
       if (game.pokemonOne.hp <= 0) {
@@ -61,7 +63,7 @@ export class GameArenaComponent implements OnInit {
         game.status = "finish";
       }
     }
-    if(game.pokemonOne.hp <= 0 || game.pokemonTwo.hp <= 0){
+    if (game.pokemonOne.hp <= 0 || game.pokemonTwo.hp <= 0) {
       const winner = game.pokemonOne.hp > this.pokemonTwo.hp ? game.pokemonOne.name : game.pokemonTwo.name;
       this.winner = "Le gagnant est " + winner.toUpperCase() + "!"
     }
